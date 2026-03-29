@@ -30,7 +30,7 @@ disk-image $image_name=image_name $image_tag=image_tag $base_dir=base_dir $files
 rechunk $image_name=image_name:
     #!/usr/bin/env bash
     export CHUNKAH_CONFIG_STR="$(podman inspect "${image_name}-bootc")"
-    podman run --rm "--mount=type=image,src=${image_name}-bootc,dest=/chunkah" -e CHUNKAH_CONFIG_STR quay.io/jlebon/chunkah build --label ostree.bootable=1 --compressed --max-layers 128 | \
+    podman run --rm "--mount=type=image,src=${image_name}-bootc,dest=/chunkah" -e CHUNKAH_CONFIG_STR quay.io/coreos/chunkah build --label ostree.bootable=1 --compressed --max-layers 128 | \
         podman load | \
         sort -n | \
         head -n1 | \
