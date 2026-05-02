@@ -7,11 +7,17 @@ permissions:
 
 on:
   push:
+    paths:
+      - 'opensuse/**'
+      - Justfile
   pull_request:
+    paths:
+      - 'opensuse/**'
+      - Justfile
     branches:
       - main
   schedule:
-    - cron: "0 1 * * TUE"
+    - cron: "0 1 * * *"
   merge_group:
   workflow_dispatch:
 
